@@ -1,0 +1,35 @@
+/* getting at an id */
+p#p01 {
+    color:blue;
+}
+
+/* getting at a class */
+p.error {
+    color:red;
+}
+
+div {
+	width:95%;
+	margin:2px;
+	padding:20px;
+	text-align: left;
+}
+
+div.query {
+	height:200px;
+}
+
+textarea#readquery {
+	readonly: true;
+}
+
+textarea#updatequery {
+	readonly: true;
+}
+
+textarea {
+	width: 100%;
+	height:100%;
+	rows: 8;
+	cols: 40;
+}
