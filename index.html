@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Hi there</title>
+		<title>Enable/Disable Wordpress Plugins</title>
+		<script src="phpUnserialize.js"></script>
+		<script>
+		var foo = phpUnserialize('s:3:"foo";');
+		</script>
 	</head>
 	<body>
-		This is a page
-		a simple page
+		<div class='header'>
+			<label>Wordpress Database name</label>
+			<textarea id='dbname' class='small'></textarea>
+			<label>Prefix for Wordpress tables</label>
+			<textarea id='prefix' class='small'></textarea>
+		</div>
+		<div class='query'>
+			<label>Run this</label>
+			<textarea id='readquery'></textarea>
+		</div>
+		<div class='query'>
+			<label>Paste Response Here</label>
+			<textarea id='oldplugins'></textarea>
+		</div>
+		<div class='plugin-area'>
+			<input type="checkbox" name="your-group" value="unit-in-group" />
+			<label>Enable/Disable all plugins</label>
+		</div>
+		<div class='plugin-area' id='all-plugins'>
+		</div>
+		<div class='query'>
+			<label>Update Query</label>
+			<textarea id='newplugins'></textarea>
+		</div>
 	</body>
 </html>
