@@ -3,6 +3,7 @@
 	<head>
 		<title>Enable/Disable Wordpress Plugins</title>
 		<script src="phpUnserialize.js"></script>
+		<link rel="stylesheet" href="wp-plugins.css">
 		<script>
 		var foo = phpUnserialize('s:3:"foo";');
 		</script>
@@ -10,16 +11,18 @@
 	<body>
 		<div class='header'>
 			<label>Wordpress Database name</label>
-			<textarea id='dbname' class='small'></textarea>
+			<input type='text' id='dbname'></textarea>
 			<label>Prefix for Wordpress tables</label>
-			<textarea id='prefix' class='small'></textarea>
+			<input type='text' id='prefix'></textarea>
 		</div>
 		<div class='query'>
 			<label>Run this</label>
-			<textarea id='readquery'></textarea>
+			<br />
+			<textarea id='readquery' readonly></textarea>
 		</div>
 		<div class='query'>
 			<label>Paste Response Here</label>
+			<br />
 			<textarea id='oldplugins'></textarea>
 		</div>
 		<div class='plugin-area'>
@@ -28,8 +31,9 @@
 		</div>
 		<div class='plugin-area' id='all-plugins'>
 		</div>
-		<div class='query'>
+		<div class='query' readonly>
 			<label>Update Query</label>
+			<br />
 			<textarea id='newplugins'></textarea>
 		</div>
 	</body>
