@@ -16,7 +16,7 @@ function GenerateBoxes() {
         // probably need to add something to clean stuff off the front and back of the array?	
     oldPlugins = unserialize(uncleanArray);
 
-    var pluginContainer = document.getElementById("all-plugins");
+    var pluginContainer = document.getElementById("PluginContainer");
 		pluginContainer.innerHTML = '';
 
 		for(i=0; i<oldPlugins.length; i++){
