@@ -13,27 +13,53 @@ function ReadQuery() {
 
 function GenerateBoxes() {
     uncleanArray = document.getElementById("OldPlugins").value;
-        // probably need to add something to clean stuff off the front and back of the array?	
+    // probably need to add something to clean stuff off the front and back of the array?	
     oldPlugins = unserialize(uncleanArray);
 
     var pluginContainer = document.getElementById("PluginContainer");
-		pluginContainer.innerHTML = '';
+    pluginContainer.innerHTML = '';
 
-		for(i=0; i<oldPlugins.length; i++){
-			checkboxContainer = document.createElement("div");
-			checkBoxContainer.class = "checkboxContainer";
+    for (i = 0; i < oldPlugins.length; i++) {
+        checkboxContainer = document.createElement("div");
+        checkBoxContainer.class = "checkboxContainer";
 
-			pluginCheckbox = document.createElement("input");
-			pluginCheckbox.type = "checkbox";
-			pluginCheckbox.class = "pluginCheckbox";
-			pluginCheckbox.name = uncleanArray[i];
+        pluginCheckbox = document.createElement("input");
+        pluginCheckbox.type = "checkbox";
+        pluginCheckbox.class = "pluginCheckbox";
+        pluginCheckbox.name = uncleanArray[i];
 
-			pluginLabel - document.createElement("label");
-			pluginLabel.class = "checkboxLabel";
-			pluginLabel.value = uncleanArray[i];
+        pluginLabel - document.createElement("label");
+        pluginLabel.class = "checkboxLabel";
+        pluginLabel.value = uncleanArray[i];
 
-			checkboxContainer.appendChild(pluginCheckbox);
-			checkboxContainer.appendChild(pluginLabel);
-			pluginContainer.appendChild(checkBoxContainer);
-		}
+        checkboxContainer.appendChild(pluginCheckbox);
+        checkboxContainer.appendChild(pluginLabel);
+        pluginContainer.appendChild(checkBoxContainer);
+    }
+}
+
+function CreateQuery() {
+    disableAll = document.getElementById("DisableAllPlugins");
+    outputTextBox = document.getElementBy('UpdateQuery');
+    dbname = document.getElementById("DBName").value;
+    prefix = document.getElementById("Prefix").value;
+    pluginContainer = document.getElementById("PluginContainer");
+    enabledPlugins = [];
+
+    if (disableAll.checked == false) {
+        for (var i in pluginContainer.children) {
+            for (var j in i.children) {
+                if (j.type == "checkbox" && j.checked == true) {
+                    enabledPlugins.push(j.name);
+                }
+            }
+        }
+    }
+
+    serialPlugins = serialize(enabledPlugins);
+
+    updateQuery = "UPDATE `" + dbname + "`.`" + prefix + "` SET option_value = '" +
+        serialPlugins + "' WHERE option_name = 'active_plugins';";
+
+    outputTextBox.value = updateQuery;
 }
