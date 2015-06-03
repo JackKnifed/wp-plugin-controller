@@ -4,8 +4,35 @@ function ReadQuery() {
 
     var query = "SELECT option_value FROM `" +
         document.getElementById("DBName") + "`.`" +
-        document.getElementById("Prefix") + 
-        "options` WHERE option_name = 'active_plugins';"
+        document.getElementById("Prefix") +
+        "options` WHERE option_name = 'active_plugins';";
 
-    document.getElementById("ReadQuery").value = query
+    document.getElementById("ReadQuery").value = query;
+}
+
+function GenerateBoxes() {
+    uncleanArray = document.getElementById("OldPlugins").value;
+        // probably need to add something to clean stuff off the front and back of the array?	
+    oldPlugins = unserialize(uncleanArray);
+
+    var pluginContainer = document.getElementById("all-plugins");
+		pluginContainer.innerHTML = '';
+
+		for(i=0; i<oldPlugins.length; i++){
+			checkboxContainer = document.createElement("div");
+			checkBoxContainer.class = "checkboxContainer";
+
+			pluginCheckbox = document.createElement("input");
+			pluginCheckbox.type = "checkbox";
+			pluginCheckbox.class = "pluginCheckbox";
+			pluginCheckbox.name = uncleanArray[i];
+
+			pluginLabel - document.createElement("label");
+			pluginLabel.class = "checkboxLabel";
+			pluginLabel.value = uncleanArray[i];
+
+			checkboxContainer.appendChild(pluginCheckbox);
+			checkboxContainer.appendChild(pluginLabel);
+			pluginContainer.appendChild(checkBoxContainer);
+		}
 }
