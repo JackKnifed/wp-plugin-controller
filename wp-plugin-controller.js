@@ -1,10 +1,11 @@
 function ReadQuery() {
     // runs every time that you change the db or prefix values
     // generates a MySQL query to output the values you need later on
+    dbname = document.getElementById("DBName").value;
+    prefix = document.getElementById("Prefix").value;
 
     var query = "SELECT option_value FROM `" +
-        document.getElementById("DBName") + "`.`" +
-        document.getElementById("Prefix") +
+        dbname + "`.`" + prefix +
         "options` WHERE option_name = 'active_plugins';";
 
     document.getElementById("ReadQuery").value = query;
