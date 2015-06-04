@@ -19,6 +19,7 @@ function ReadQuery() {
 }
 
 function GenerateBoxes() {
+    // generates a bunch of textboxes in a div for each plugin that was enabled
     uncleanArray = document.getElementById("OldPlugins").value;
     // probably need to add something to clean stuff off the front and back of the array?	
     oldPlugins = unserialize(uncleanArray);
@@ -46,6 +47,7 @@ function GenerateBoxes() {
 }
 
 function CreateQuery() {
+    // generatesa a query to update wordpress with the new enabled plugins
     disableAll = document.getElementById("DisableAllPlugins");
     outputTextBox = document.getElementBy('UpdateQuery');
     dbname = document.getElementById("DBName").value;
@@ -65,8 +67,13 @@ function CreateQuery() {
 
     serialPlugins = serialize(enabledPlugins);
 
-    updateQuery = "UPDATE `" + dbname + "`.`" + prefix + "` SET option_value = '" +
+if dbname != '' {
+    updateQuery = "UPDATE `" + dbname + "`.`" + prefix + "options` SET option_value = '" +
         serialPlugins + "' WHERE option_name = 'active_plugins';";
+} else {
+    updateQuery = "UPDATE `" + prefix + "options` SET option_value = '" +
+        serialPlugins + "' WHERE option_name = 'active_plugins';";
+}
 
     outputTextBox.value = updateQuery;
 }
