@@ -48,9 +48,9 @@ function CreateQuery() {
 
     if (disableAll.checked == false) {
         for (var i in pluginContainer.children) {
-            for (var j in i.children) {
-                if (j.type == "checkbox" && j.checked == true) {
-                    enabledPlugins.push(j.name);
+            for (var j in pluginContainer[i].children) {
+                if (pluginContainer[i][j].type == "checkbox" && pluginContainer[i][j].checked == true) {
+                    enabledPlugins.push(pluginContainer[i][j].name);
                 }
             }
         }
