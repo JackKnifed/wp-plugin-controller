@@ -13,9 +13,9 @@
 	<body>
 		<div class='header'>
 			<label>DB Name</label>
-			<input type='text' id='DBName'></textarea>
+			<input type='text' id='DBName' onkeyup=ReadQuery() onpaste=ReadQuery()></textarea>
 			<label>Prefix</label>
-			<input type='text' id='Prefix'></textarea>
+			<input type='text' id='Prefix' onkeyup=ReadQuery() onpaste=ReadQueyr()>wp_</textarea>
 		</div>
 		<div class='query'>
 			<label>Run this</label>
@@ -25,10 +25,10 @@
 		<div class='query'>
 			<label>Paste Response Here</label>
 			<br />
-			<textarea id='OldPlugins'></textarea>
+			<textarea id='OldPlugins' onkeyup=GenerateBoxes() onpaste=GenerateBoxes()></textarea>
 		</div>
 		<div class='plugin-area'>
-			<input type="checkbox" id="DisableAllPlugins" />
+			<input type="checkbox" id="DisableAllPlugins" onclick=CreateQuery() onkeyup=CreateQuery() />
 			<label>Enable/Disable all plugins</label>
 		</div>
 		<div class='plugin-area' id='PluginContainer'>
