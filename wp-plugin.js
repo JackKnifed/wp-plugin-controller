@@ -4,9 +4,16 @@ function ReadQuery() {
     dbname = document.getElementById("DBName").value;
     prefix = document.getElementById("Prefix").value;
 
-    var query = "SELECT option_value FROM `" +
-        dbname + "`.`" + prefix +
-        "options` WHERE option_name = 'active_plugins';";
+    var query = '';
+
+    if dbname != '' {
+        query = "SELECT option_value FROM `" +
+            dbname + "`.`" + prefix +
+            "options` WHERE option_name = 'active_plugins';";
+    } else {
+        query = "SELECT option_value FROM `" + prefix +
+            "options` WHERE option_name = 'active_plugins';";
+    }
 
     document.getElementById("ReadQuery").value = query;
 }
