@@ -34,6 +34,8 @@ function GenerateBoxes() {
         pluginCheckbox = document.createElement("input");
         pluginCheckbox.type = "checkbox";
         pluginCheckbox.class = "pluginCheckbox";
+        pluginCheckbox.onclick = GenerateBoxes();
+        pluginCheckbox.onkeyup = GenerateBoxes();
         pluginCheckbox.name = uncleanArray[i];
 
         pluginLabel - document.createElement("label");
