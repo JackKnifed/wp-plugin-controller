@@ -14,3 +14,7 @@ May switch over to [php.js](http://phpjs.org/)
 [serialize](http://phpjs.org/functions/serialize/)
 
 [unserialize](http://phpjs.org/functions/unserialize/)
+
+## Test data ##
+
+[Here is a bunch of test data](testdata.md)
